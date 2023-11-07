@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django + Tailwind CSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+
+</head>
+
+<body class="bg-purple-50">
+    <div class="relative min-h-screen w-full flex flex-col items-center justify-between gap-12 px-8 py-12 bg-gradient-to-br from-black via-[#23001f] to-black">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+
+</html>
