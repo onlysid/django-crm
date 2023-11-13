@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-white font-extrabold text-4xl">Create new lead</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="bg-white p-10 rounded-xl">
+            {{ form.as_p }}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/leads" class="px-5 py-3 bg-red-400 transition-all hover:bg-red-700 text-white hover:scale-110 rounded-xl">Go back to leads.</a>
+{% endblock content %}

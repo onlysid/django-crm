@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-white font-extrabold text-4xl">{{lead}}</h1>
+    <p class="text-white">age: {{lead.age}}</p>
+    <div class="flex gap-4 justify-center items-center">
+        <a href="{% url 'leads:lead-update' lead.pk %}">Update</a>
+        <a href="{% url 'leads:lead-delete' lead.pk %}">Delete</a>
+    </div>
+    <a href="/leads" class="px-5 py-3 bg-red-400 transition-all hover:bg-red-700 text-white hover:scale-110 rounded-xl">Go back to leads.</a>
+{% endblock content %}
