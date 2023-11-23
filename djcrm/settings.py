@@ -11,19 +11,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
+if READ_DOT_ENV_FILE:
+    environ.Env.read_env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t^a0f%sepbfsa!2+x0&6x3$@3(a8c6i6&z)4%#an&q_kuij*ks'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -132,3 +132,4 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append('utils.context_processors.a
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = '/leads'
+LOGIN_URL = "/login"
